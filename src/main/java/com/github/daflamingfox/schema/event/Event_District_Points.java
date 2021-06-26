@@ -1,6 +1,5 @@
 package com.github.daflamingfox.schema.event;
 
-import java.util.Arrays;
 import java.util.Map;
 
 import com.google.gson.annotations.SerializedName;
