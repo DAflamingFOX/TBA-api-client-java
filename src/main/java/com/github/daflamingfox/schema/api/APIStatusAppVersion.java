@@ -3,7 +3,7 @@ package com.github.daflamingfox.schema.api;
 import com.github.daflamingfox.util.ObjectUtils;
 import com.google.gson.annotations.SerializedName;
 
-public class API_Status_App_Version {
+public class APIStatusAppVersion {
 
     @SerializedName("min_app_version")
     public int minAppVersion;

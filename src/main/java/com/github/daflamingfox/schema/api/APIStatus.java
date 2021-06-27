@@ -18,10 +18,10 @@ public class APIStatus {
     public String[] downEvents;
 
     @SerializedName("ios")
-    public API_Status_App_Version ios;
+    public APIStatusAppVersion ios;
     
     @SerializedName("android")
-    public API_Status_App_Version android;
+    public APIStatusAppVersion android;
 
     @Override
     public String toString() {
