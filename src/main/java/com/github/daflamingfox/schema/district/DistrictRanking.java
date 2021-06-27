@@ -2,7 +2,7 @@ package com.github.daflamingfox.schema.district;
 
 import com.google.gson.annotations.SerializedName;
 
-public class District_Ranking {
+public class DistrictRanking {
     
     @SerializedName("team_key")
     public String teamKey;

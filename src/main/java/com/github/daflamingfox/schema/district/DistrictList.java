@@ -2,7 +2,7 @@ package com.github.daflamingfox.schema.district;
 
 import com.google.gson.annotations.SerializedName;
 
-public class District_List {
+public class DistrictList {
     
     @SerializedName("abbreviation")
     public String abbreviation;
