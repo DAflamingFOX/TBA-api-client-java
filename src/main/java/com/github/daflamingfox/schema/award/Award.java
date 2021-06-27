@@ -14,7 +14,7 @@ public class Award {
     public String eventKey;
     
     @SerializedName("recipient_list")
-    public Award_Recipient[] recipientList;
+    public AwardRecipient[] recipientList;
     
     @SerializedName("year")
     public int year;
