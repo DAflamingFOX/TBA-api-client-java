@@ -3,7 +3,7 @@ package com.github.daflamingfox.schema.event;
 import com.github.daflamingfox.schema.other.WLT_Record;
 import com.google.gson.annotations.SerializedName;
 
-public class Event_Ranking {
+public class EventRanking {
     
     @SerializedName("rankings")
     public Rankings[] rankings;

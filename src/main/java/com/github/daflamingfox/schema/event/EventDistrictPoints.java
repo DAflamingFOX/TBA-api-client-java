@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Event_District_Points {
+public class EventDistrictPoints {
     
     @SerializedName("points")
     public Map<String, TeamPoints> points;

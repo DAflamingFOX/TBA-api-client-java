@@ -4,7 +4,7 @@ import java.util.Map;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Event_OPRs {
+public class EventOPRs {
     // offense power rating
     @SerializedName("oprs")
     public Map<String, Double> oprs;

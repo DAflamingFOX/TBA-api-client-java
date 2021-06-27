@@ -1,9 +1,9 @@
 package com.github.daflamingfox.schema.event;
 
-import com.github.daflamingfox.schema.district.District_List;
+import com.github.daflamingfox.schema.district.DistrictList;
 import com.google.gson.annotations.SerializedName;
 
-public class Event_Simple {
+public class EventSimple {
 
     @SerializedName("key")
     public String key;
@@ -18,7 +18,7 @@ public class Event_Simple {
     public int eventType;
 
     @SerializedName("district")
-    public District_List district;
+    public DistrictList district;
 
     @SerializedName("city")
     public String city;
@@ -38,7 +38,7 @@ public class Event_Simple {
     @SerializedName("year")
     public int year;
 
-    public Event_Simple(Event event) {
+    public EventSimple(Event event) {
         this.key = event.key;
         this.name = event.name;
         this.eventCode = event.eventCode;

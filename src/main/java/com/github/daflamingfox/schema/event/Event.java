@@ -1,6 +1,6 @@
 package com.github.daflamingfox.schema.event;
 
-import com.github.daflamingfox.schema.district.District_List;
+import com.github.daflamingfox.schema.district.DistrictList;
 import com.github.daflamingfox.schema.other.Webcast;
 import com.google.gson.annotations.SerializedName;
 
@@ -19,7 +19,7 @@ public class Event {
     public int eventType;
 
     @SerializedName("ditrict")
-    public District_List district;
+    public DistrictList district;
 
     @SerializedName("city")
     public String city;
@@ -96,7 +96,7 @@ public class Event {
     @SerializedName("playoff_type_string")
     public String playoffTypeString;
 
-    public Event_Simple toSimple() {
-        return new Event_Simple(this);
+    public EventSimple toSimple() {
+        return new EventSimple(this);
     }
 }
