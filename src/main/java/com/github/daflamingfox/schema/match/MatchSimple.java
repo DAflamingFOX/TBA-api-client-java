@@ -3,7 +3,7 @@ package com.github.daflamingfox.schema.match;
 import com.github.daflamingfox.schema.match.Match.Alliances;
 import com.google.gson.annotations.SerializedName;
 
-public class Match_Simple {
+public class MatchSimple {
     
     @SerializedName("key")
     public String key;
@@ -35,7 +35,7 @@ public class Match_Simple {
     @SerializedName("predicted_time")
     public long predictedTime;
 
-    public Match_Simple(Match match) {
+    public MatchSimple(Match match) {
         this.key = match.key;
         this.compLevel = match.compLevel;
         this.setNumber = match.setNumber;

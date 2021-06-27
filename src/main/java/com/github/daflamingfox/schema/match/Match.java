@@ -40,18 +40,18 @@ public class Match {
     @SerializedName("videos")
     public Video[] videos;
     
-    public Match_Simple toSimple() {
-        return new Match_Simple(this);
+    public MatchSimple toSimple() {
+        return new MatchSimple(this);
     }
 
 
     public class Alliances {
         
         @SerializedName("red")
-        public Match_alliance red;
+        public MatchAlliance red;
         
         @SerializedName("blue")
-        public Match_alliance blue;
+        public MatchAlliance blue;
     }
 
     public class Video {

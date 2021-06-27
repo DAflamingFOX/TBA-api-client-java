@@ -2,7 +2,7 @@ package com.github.daflamingfox.schema.match;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Match_alliance {
+public class MatchAlliance {
     
     @SerializedName("score")
     public int score;
