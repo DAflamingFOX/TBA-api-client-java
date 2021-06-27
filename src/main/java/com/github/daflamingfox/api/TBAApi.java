@@ -98,7 +98,7 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), String[].class);
         }
 
-        public Team[] getTeamFromYearByPageNumber(int year, int pageNumber) throws IOException {
+        public Team[] getTeamInYearByPageNumber(int year, int pageNumber) throws IOException {
             Request req = reqBuilder.url(url+"teams/"+year+"/"+pageNumber).build();
             
             Response rsp = okClient.newCall(req).execute();
@@ -107,7 +107,7 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Team[].class);
         }
 
-        public Team_Simple[] getTeamFromYearByPageNumberAsSimple(int year, int pageNumber) throws IOException {
+        public Team_Simple[] getTeamInYearByPageNumberAsSimple(int year, int pageNumber) throws IOException {
             Request req = reqBuilder.url(url+"teams/"+year+"/"+pageNumber+"/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
@@ -125,7 +125,7 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), String[].class);
         }
 
-        public Map<String, Team_Event_Status> getTeamEventStatusForYear(String teamKey, int year) throws IOException {
+        public Map<String, Team_Event_Status> getTeamEventStatusesInYear(String teamKey, int year) throws IOException {
             Request req = reqBuilder.url(url+"team/"+teamKey+"/events/"+year+"/statuses").build();
             
             Response rsp = okClient.newCall(req).execute();
@@ -135,7 +135,7 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), tesMapType);
         }
 
-        public Event[] getEventsForYear(int year) throws IOException {
+        public Event[] getEventsInYear(int year) throws IOException {
             Request req = reqBuilder.url(url+"events/"+year).build();
 
             Response rsp = okClient.newCall(req).execute();
@@ -144,7 +144,7 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Event[].class);
         }
 
-        public Event_Simple[] getEventsForYearAsSimple(int year) throws IOException {
+        public Event_Simple[] getEventsInYearAsSimple(int year) throws IOException {
             Request req = reqBuilder.url(url+"events/"+year+"/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
@@ -153,7 +153,7 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Event_Simple[].class);
         }
 
-        public String[] getEventKeysForYear(int year) throws IOException {
+        public String[] getEventKeysInYear(int year) throws IOException {
             Request req = reqBuilder.url(url+"events/"+year+"/keys").build();
 
             Response rsp = okClient.newCall(req).execute();
@@ -162,7 +162,7 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), String[].class);
         }
         
-        public Team[] getTeamsAtEvent(String eventKey) throws IOException {
+        public Team[] getTeamsInEvent(String eventKey) throws IOException {
             Request req = reqBuilder.url(url+"event/"+eventKey+"/teams").build();
 
             Response rsp = okClient.newCall(req).execute();
@@ -171,7 +171,7 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Team[].class);
         }
 
-        public Team_Simple[] getTeamsAtEventAsSimple(String eventKey) throws IOException {
+        public Team_Simple[] getTeamsInEventAsSimple(String eventKey) throws IOException {
             Request req = reqBuilder.url(url+"event/"+eventKey+"/teams/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
@@ -189,7 +189,7 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Team[].class);
         }
 
-        public Map<String, Team_Event_Status> getTeamEventStatusForEvent(String eventKey) throws IOException {
+        public Map<String, Team_Event_Status> getTeamEventStatusesInEvent(String eventKey) throws IOException {
             Request req = reqBuilder.url(url+"event/"+eventKey+"/teams/statuses").build();
 
             Response rsp = okClient.newCall(req).execute();
@@ -264,4 +264,32 @@ public class TBAApi {
 
         
     } 
+   
+    /**
+     * Calls that return team or team-specific information.
+     */
+    public class Team {
+
+    }
+
+    /**
+     *  Calls that return event, or event-specific information. 
+     */
+    public class Event {
+
+    }
+
+    /**
+     * Calls that return match, or match-specific information.
+     */
+    public class Match {
+
+    }
+
+    /**
+     * Calls that return district, or district-related information.
+     */
+    public class District {
+
+    }
 }
