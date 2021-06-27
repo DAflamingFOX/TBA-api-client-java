@@ -4,19 +4,19 @@ import java.io.IOException;
 import java.lang.reflect.Type;
 import java.util.Map;
 
-import com.github.daflamingfox.schema.api.API_Status;
+import com.github.daflamingfox.schema.api.APIStatus;
 import com.github.daflamingfox.schema.award.Award;
-import com.github.daflamingfox.schema.district.District_List;
-import com.github.daflamingfox.schema.district.District_Ranking;
+import com.github.daflamingfox.schema.district.DistrictList;
+import com.github.daflamingfox.schema.district.DistrictRanking;
 import com.github.daflamingfox.schema.event.Event;
-import com.github.daflamingfox.schema.event.Event_Simple;
+import com.github.daflamingfox.schema.event.EventSimple;
 import com.github.daflamingfox.schema.match.Match;
-import com.github.daflamingfox.schema.match.Match_Simple;
+import com.github.daflamingfox.schema.match.MatchSimple;
 import com.github.daflamingfox.schema.other.Media;
 import com.github.daflamingfox.schema.team.Team;
-import com.github.daflamingfox.schema.team.Team_Event_Status;
-import com.github.daflamingfox.schema.team.Team_Robot;
-import com.github.daflamingfox.schema.team.Team_Simple;
+import com.github.daflamingfox.schema.team.TeamEventStatus;
+import com.github.daflamingfox.schema.team.TeamRobot;
+import com.github.daflamingfox.schema.team.TeamSimple;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonSyntaxException;
@@ -71,13 +71,13 @@ public class TBAApi {
      */
     public class TBA {
         
-        public API_Status getStatus() throws IOException {
+        public APIStatus getStatus() throws IOException {
             Request req = reqBuilder.url(url+"status").build();
             
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
             
-            return gson.fromJson(rsp.body().string(), API_Status.class);
+            return gson.fromJson(rsp.body().string(), APIStatus.class);
         }
     }
     /**
@@ -94,13 +94,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Team[].class);
         }
 
-        public Team_Simple[] getTeamsByPageNumberAsSimple(int pageNumber) throws IOException {
+        public TeamSimple[] getTeamsByPageNumberAsSimple(int pageNumber) throws IOException {
             Request req = reqBuilder.url(url+"teams/"+pageNumber+"/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
             
-            return gson.fromJson(rsp.body().string(), Team_Simple[].class);
+            return gson.fromJson(rsp.body().string(), TeamSimple[].class);
         }
 
         public String[] getTeamKeysByPageNumber(int pageNumber) throws IOException {
@@ -121,13 +121,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Team[].class);
         }
 
-        public Team_Simple[] getTeamInYearByPageNumberAsSimple(int year, int pageNumber) throws IOException {
+        public TeamSimple[] getTeamInYearByPageNumberAsSimple(int year, int pageNumber) throws IOException {
             Request req = reqBuilder.url(url+"teams/"+year+"/"+pageNumber+"/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Team_Simple[].class);
+            return gson.fromJson(rsp.body().string(), TeamSimple[].class);
         }
 
         public String[] getTeamKeysFromYearByPageNumber(int year, int pageNumber) throws IOException {
@@ -139,13 +139,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), String[].class);
         }
 
-        public Map<String, Team_Event_Status> getTeamEventStatusesInYear(String teamKey, int year) throws IOException {
+        public Map<String, TeamEventStatus> getTeamEventStatusesInYear(String teamKey, int year) throws IOException {
             Request req = reqBuilder.url(url+"team/"+teamKey+"/events/"+year+"/statuses").build();
             
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            Type tesMapType = new TypeToken<Map<String, Team_Event_Status>>() {}.getType();
+            Type tesMapType = new TypeToken<Map<String, TeamEventStatus>>() {}.getType();
             return gson.fromJson(rsp.body().string(), tesMapType);
         }
 
@@ -158,13 +158,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Event[].class);
         }
 
-        public Event_Simple[] getEventsInYearAsSimple(int year) throws IOException {
+        public EventSimple[] getEventsInYearAsSimple(int year) throws IOException {
             Request req = reqBuilder.url(url+"events/"+year+"/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Event_Simple[].class);
+            return gson.fromJson(rsp.body().string(), EventSimple[].class);
         }
 
         public String[] getEventKeysInYear(int year) throws IOException {
@@ -185,13 +185,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Team[].class);
         }
 
-        public Team_Simple[] getTeamsInEventAsSimple(String eventKey) throws IOException {
+        public TeamSimple[] getTeamsInEventAsSimple(String eventKey) throws IOException {
             Request req = reqBuilder.url(url+"event/"+eventKey+"/teams/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Team_Simple[].class);
+            return gson.fromJson(rsp.body().string(), TeamSimple[].class);
         }
 
         public Team[] getTeamKeysForEvent(String eventKey) throws IOException {
@@ -203,13 +203,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Team[].class);
         }
 
-        public Map<String, Team_Event_Status> getTeamEventStatusesInEvent(String eventKey) throws IOException {
+        public Map<String, TeamEventStatus> getTeamEventStatusesInEvent(String eventKey) throws IOException {
             Request req = reqBuilder.url(url+"event/"+eventKey+"/teams/statuses").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            Type tesMapType = new TypeToken<Map<String, Team_Event_Status>>() {}.getType();
+            Type tesMapType = new TypeToken<Map<String, TeamEventStatus>>() {}.getType();
             return gson.fromJson(rsp.body().string(), tesMapType);
         }
 
@@ -222,13 +222,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Event[].class);
         }
 
-        public Event_Simple[] getEventsInDistrictAsSimple(String districtKey) throws IOException {
+        public EventSimple[] getEventsInDistrictAsSimple(String districtKey) throws IOException {
             Request req = reqBuilder.url(url+"district/"+districtKey+"/events/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Event_Simple[].class);
+            return gson.fromJson(rsp.body().string(), EventSimple[].class);
         }
 
         public String[] getEventKeysInDistrict(String districtKey) throws IOException {
@@ -249,13 +249,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Team[].class);
         }
 
-        public Team_Simple[] getTeamsInDistrictAsSimple(String districtKey) throws IOException {
+        public TeamSimple[] getTeamsInDistrictAsSimple(String districtKey) throws IOException {
             Request req = reqBuilder.url(url+"district/"+districtKey+"/teams/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Team_Simple[].class);
+            return gson.fromJson(rsp.body().string(), TeamSimple[].class);
         }
 
         public String[] getTeamKeysInDistrict(String districtKey) throws IOException {
@@ -267,13 +267,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), String[].class);
         }
 
-        public District_Ranking[] getTeamDistrictRankingsInDistrict(String districtKey) throws IOException {
+        public DistrictRanking[] getTeamDistrictRankingsInDistrict(String districtKey) throws IOException {
             Request req = reqBuilder.url(url+"district/"+districtKey+"/rankings").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), District_Ranking[].class);
+            return gson.fromJson(rsp.body().string(), DistrictRanking[].class);
         }
 
     } 
@@ -291,13 +291,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Team[].class);
         }
 
-        public Team_Simple[] getTeamsByPageNumberAsSimple(int pageNumber) throws IOException {
+        public TeamSimple[] getTeamsByPageNumberAsSimple(int pageNumber) throws IOException {
             Request req = reqBuilder.url(url+"teams/"+pageNumber+"/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Team_Simple[].class);
+            return gson.fromJson(rsp.body().string(), TeamSimple[].class);
         }
     
         public String[] getTeamKeysByPageNumber(int pageNumber) throws IOException {
@@ -318,13 +318,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Team[].class);
         }
 
-        public Team_Simple[] getTeamsInYearByPageNumberAsSimple(int year, int pageNumber) throws IOException {
+        public TeamSimple[] getTeamsInYearByPageNumberAsSimple(int year, int pageNumber) throws IOException {
             Request req = reqBuilder.url(url+"teams/"+year+"/"+pageNumber+"/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Team_Simple[].class);
+            return gson.fromJson(rsp.body().string(), TeamSimple[].class);
         }
     
         public String[] getTeamKeysInYearByPageNumber(int year, int pageNumber) throws IOException {
@@ -345,13 +345,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Team.class);
         }
         
-        public Team_Simple getTeamAsSimple(String teamKey) throws IOException {
+        public TeamSimple getTeamAsSimple(String teamKey) throws IOException {
             Request req = reqBuilder.url(url+"team/"+teamKey+"/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Team_Simple.class);
+            return gson.fromJson(rsp.body().string(), TeamSimple.class);
         }
 
         public Integer[] getYearsTeamParticipated(String teamKey) throws IOException {
@@ -363,22 +363,22 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Integer[].class);
         }
 
-        public District_List[] getDistrictsByTeamKey(String teamKey) throws IOException {
+        public DistrictList[] getDistrictsByTeamKey(String teamKey) throws IOException {
             Request req = reqBuilder.url(url+"team/"+teamKey+"/districts").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), District_List[].class);
+            return gson.fromJson(rsp.body().string(), DistrictList[].class);
         }
 
-        public Team_Robot[] getTeamRobotsByTeamKey(String teamKey) throws IOException {
+        public TeamRobot[] getTeamRobotsByTeamKey(String teamKey) throws IOException {
             Request req = reqBuilder.url(url+"team/"+teamKey+"/robots").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Team_Robot[].class);
+            return gson.fromJson(rsp.body().string(), TeamRobot[].class);
         }
 
         public Event[] getEventsByTeamKey(String teamKey) throws IOException {
@@ -390,13 +390,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Event[].class);
         }
 
-        public Event_Simple[] getEventsByTeamKeyAsSimple(String teamKey) throws IOException {
+        public EventSimple[] getEventsByTeamKeyAsSimple(String teamKey) throws IOException {
             Request req = reqBuilder.url(url+"team/"+teamKey+"/events/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Event_Simple[].class);
+            return gson.fromJson(rsp.body().string(), EventSimple[].class);
         }
 
         public String[] getEventKeysByTeamKey(String teamKey) throws IOException {
@@ -417,13 +417,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Event[].class);
         }
 
-        public Event_Simple[] getEventsByTeamKeyAndYearAsSimple(String teamKey, int year) throws IOException {
+        public EventSimple[] getEventsByTeamKeyAndYearAsSimple(String teamKey, int year) throws IOException {
             Request req = reqBuilder.url(url+"team/"+teamKey+"/events/"+year+"/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Event_Simple[].class);
+            return gson.fromJson(rsp.body().string(), EventSimple[].class);
         }
 
         public String[] getEventKeysByTeamKeyAndYear(String teamKey, int year) throws IOException {
@@ -435,13 +435,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), String[].class);
         }
 
-        public Map<String, Team_Event_Status> getTeamEventStatusesByTeamKeyAndYear(String teamKey, int year) throws IOException {
+        public Map<String, TeamEventStatus> getTeamEventStatusesByTeamKeyAndYear(String teamKey, int year) throws IOException {
             Request req = reqBuilder.url(url+"team/"+teamKey+"/events/"+year+"/satuses").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            Type tesMapType = new TypeToken<Map<String, Team_Event_Status>>() {}.getType();
+            Type tesMapType = new TypeToken<Map<String, TeamEventStatus>>() {}.getType();
             return gson.fromJson(rsp.body().string(), tesMapType);
         }
 
@@ -454,13 +454,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Match[].class);
         }
 
-        public Match_Simple[] getMatchesByTeamKeyAndEventKeyAsSimple(String teamKey, String eventKey) throws IOException {
+        public MatchSimple[] getMatchesByTeamKeyAndEventKeyAsSimple(String teamKey, String eventKey) throws IOException {
             Request req = reqBuilder.url(url+"team/"+teamKey+"/event/"+eventKey+"/matches").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Match_Simple[].class);
+            return gson.fromJson(rsp.body().string(), MatchSimple[].class);
         }
 
         public String[] getMatchKeysByTeamKeyAndEventKey(String teamKey, String eventKey) throws IOException {
@@ -481,13 +481,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Award[].class);
         }
 
-        public Team_Event_Status getTeamEventStatusByTeamKeyAndEventKey(String teamKey, String eventKey) throws IOException {
+        public TeamEventStatus getTeamEventStatusByTeamKeyAndEventKey(String teamKey, String eventKey) throws IOException {
             Request req = reqBuilder.url(url+"team/"+teamKey+"/event"+eventKey+"/status").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Team_Event_Status.class);
+            return gson.fromJson(rsp.body().string(), TeamEventStatus.class);
         }
 
         public Award[] getAwardsByTeamKey(String teamKey) throws IOException {
@@ -517,13 +517,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Match[].class);
         }
 
-        public Match_Simple[] getMatchesByTeamKeyAndYearAsSimple(String teamKey, int year) throws IOException {
+        public MatchSimple[] getMatchesByTeamKeyAndYearAsSimple(String teamKey, int year) throws IOException {
             Request req = reqBuilder.url(url+"team/"+teamKey+"/matches/"+year+"/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Match_Simple[].class);
+            return gson.fromJson(rsp.body().string(), MatchSimple[].class);
         }
 
         public String[] getMatchKeysByTeamKeyAndYear(String teamKey, int year) throws IOException {
@@ -580,13 +580,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Team[].class);
         }
 
-        public Team_Simple[] getTeamByEventKeyAsSimple(String eventKey) throws IOException {
+        public TeamSimple[] getTeamByEventKeyAsSimple(String eventKey) throws IOException {
             Request req = reqBuilder.url(url+"event/"+eventKey+"/teams/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Team_Simple[].class);
+            return gson.fromJson(rsp.body().string(), TeamSimple[].class);
         }
 
         public String[] getTeamKeysByEventKey(String eventKey) throws IOException {
@@ -598,13 +598,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), String[].class);
         }
 
-        public Map<String, Team_Event_Status> getTeamEventStatusesByEventKey(String eventKey) throws IOException {
+        public Map<String, TeamEventStatus> getTeamEventStatusesByEventKey(String eventKey) throws IOException {
             Request req = reqBuilder.url(url+"event/"+eventKey+"/teams/statuses").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            Type tesMapType = new TypeToken<Map<String, Team_Event_Status>>() {}.getType();
+            Type tesMapType = new TypeToken<Map<String, TeamEventStatus>>() {}.getType();
             return gson.fromJson(rsp.body().string(), tesMapType);
         }
 
@@ -617,13 +617,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), Team[].class);
         }
 
-        public Team_Simple[] getTeamsByDistrictKeyAsSimple(String districtKey) throws IOException {
+        public TeamSimple[] getTeamsByDistrictKeyAsSimple(String districtKey) throws IOException {
             Request req = reqBuilder.url(url+"district/"+districtKey+"/teams/simple").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), Team_Simple[].class);
+            return gson.fromJson(rsp.body().string(), TeamSimple[].class);
         }
 
         public String[] getTeamKeysByDistrictKey(String districtKey) throws IOException {
@@ -635,13 +635,13 @@ public class TBAApi {
             return gson.fromJson(rsp.body().string(), String[].class);
         }
 
-        public District_Ranking[] getRankingsbyDistrictKey(String districtKey) throws IOException {
+        public DistrictRanking[] getRankingsbyDistrictKey(String districtKey) throws IOException {
             Request req = reqBuilder.url(url+"district/"+districtKey+"/rankings/").build();
 
             Response rsp = okClient.newCall(req).execute();
             lMDate = rsp.headers().get(lM);
 
-            return gson.fromJson(rsp.body().string(), District_Ranking[].class);
+            return gson.fromJson(rsp.body().string(), DistrictRanking[].class);
         }
 
 
@@ -651,7 +651,7 @@ public class TBAApi {
      *  Calls that return event, or event-specific information. 
      */
     public class EventCalls {
-
+        
     }
 
     /**
