@@ -3,7 +3,7 @@ package com.github.daflamingfox.schema.api;
 import com.github.daflamingfox.util.ObjectUtils;
 import com.google.gson.annotations.SerializedName;
 
-public class API_Status {
+public class APIStatus {
 
     @SerializedName("current_season")
     public int currentSeason;
