@@ -2,7 +2,7 @@ package com.github.daflamingfox.schema.other;
 
 import com.google.gson.annotations.SerializedName;
 
-public class WLT_Record {
+public class WLTRecord {
     
     @SerializedName("losses")
     public int losses;

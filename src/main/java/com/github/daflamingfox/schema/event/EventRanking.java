@@ -1,6 +1,6 @@
 package com.github.daflamingfox.schema.event;
 
-import com.github.daflamingfox.schema.other.WLT_Record;
+import com.github.daflamingfox.schema.other.WLTRecord;
 import com.google.gson.annotations.SerializedName;
 
 public class EventRanking {
@@ -29,7 +29,7 @@ public class EventRanking {
         public double[] sortOrders;
         
         @SerializedName("record")
-        public WLT_Record record;
+        public WLTRecord record;
         
         @SerializedName("rank")
         public int rank;

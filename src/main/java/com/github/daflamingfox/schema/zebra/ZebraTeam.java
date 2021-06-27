@@ -2,7 +2,7 @@ package com.github.daflamingfox.schema.zebra;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Zebra_team {
+public class ZebraTeam {
     
     @SerializedName("team_key")
     public String teamKey;

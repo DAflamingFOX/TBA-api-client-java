@@ -2,7 +2,7 @@ package com.github.daflamingfox.schema.other;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Elimination_Alliance {
+public class EliminationAlliance {
     
     @SerializedName("name")
     public String name;
@@ -37,10 +37,10 @@ public class Elimination_Alliance {
         public String level;
         
         @SerializedName("record")
-        public WLT_Record record;
+        public WLTRecord record;
         
         @SerializedName("current_level_record")
-        public WLT_Record currentLevelRecord;
+        public WLTRecord currentLevelRecord;
         
         @SerializedName("status")
         public String status;

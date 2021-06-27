@@ -16,9 +16,9 @@ public class Zebra {
     public class Alliances {
         
         @SerializedName("red")
-        public Zebra_team[] red;
+        public ZebraTeam[] red;
         
         @SerializedName("blue")
-        public Zebra_team[] blue;
+        public ZebraTeam[] blue;
     }
 }
