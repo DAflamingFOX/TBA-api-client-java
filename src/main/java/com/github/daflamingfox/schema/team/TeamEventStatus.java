@@ -2,16 +2,16 @@ package com.github.daflamingfox.schema.team;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Team_Event_Status {
+public class TeamEventStatus {
     
     @SerializedName("qual")
-    public Team_Event_Status_rank qual;
+    public TeamEventStatusRank qual;
     
     @SerializedName("alliance")
-    public Team_Event_Status_alliance alliance;
+    public TeamEventStatusAlliance alliance;
     
     @SerializedName("playoff")
-    public Team_Event_Status_playoff playoff;
+    public TeamEventStatusPlayoff playoff;
     
     @SerializedName("aliance_status_str")
     public String allianceStatusStr;

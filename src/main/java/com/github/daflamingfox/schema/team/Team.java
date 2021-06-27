@@ -40,7 +40,7 @@ public class Team {
     @SerializedName("motto")
     public String motto;
  
-    public Team_Simple toSimple() {
-        return new Team_Simple(this);
+    public TeamSimple toSimple() {
+        return new TeamSimple(this);
     }
 }

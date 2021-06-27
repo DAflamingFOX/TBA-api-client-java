@@ -2,7 +2,7 @@ package com.github.daflamingfox.schema.team;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Team_Simple {
+public class TeamSimple {
        
     @SerializedName("key")
     public String key;
@@ -25,7 +25,7 @@ public class Team_Simple {
     @SerializedName("country")
     public String country;
 
-    public Team_Simple(Team team) {
+    public TeamSimple(Team team) {
         this.key = team.key;
         this.teamNumber = team.teamNumber;
         this.nickname = team.nickname;

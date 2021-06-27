@@ -2,7 +2,7 @@ package com.github.daflamingfox.schema.team;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Team_Robot {
+public class TeamRobot {
     
     @SerializedName("year")
     public int year;

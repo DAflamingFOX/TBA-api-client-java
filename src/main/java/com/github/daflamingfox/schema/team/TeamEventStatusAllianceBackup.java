@@ -2,7 +2,7 @@ package com.github.daflamingfox.schema.team;
 
 import com.google.gson.annotations.SerializedName;
 
-public class Team_Event_Status_alliance_backup {
+public class TeamEventStatusAllianceBackup {
     
     @SerializedName("description")
     public String description;

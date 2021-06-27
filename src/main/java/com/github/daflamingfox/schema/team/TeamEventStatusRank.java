@@ -3,7 +3,7 @@ package com.github.daflamingfox.schema.team;
 import com.github.daflamingfox.schema.other.WLTRecord;
 import com.google.gson.annotations.SerializedName;
 
-public class Team_Event_Status_rank {
+public class TeamEventStatusRank {
     
     @SerializedName("num_teams")
     public int numTeams;
