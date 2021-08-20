@@ -12,3 +12,4 @@ buildNumber.properties
 Test.java
 util/
 .vscode/
+.settings/
