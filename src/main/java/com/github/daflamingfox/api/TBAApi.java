@@ -645,13 +645,34 @@ public class TBAApi {
         }
 
 
+
     }
 
     /**
      *  Calls that return event, or event-specific information. 
      */
     public class EventCalls {
+        public Event[] getEventsByTeamKey(String teamKey) throws IOException {
+            Request req = reqBuilder.url(url+"team/"+teamKey+"/events/").build();
+
+            Response rsp = okClient.newCall(req).execute();
+            lMDate = rsp.headers().get(lM);
+
+            return gson.fromJson(rsp.body().string(), Event[].class);
+        }
+
+        public EventSimple[] getEventsByTeamKeyAsSimple(String teamKey) throws IOException {
+            Request req = reqBuilder.url(url+"team/"+teamKey+"/events/simple").build();
+
+            Response rsp = okClient.newCall(req).execute();
+            lMDate = rsp.headers().get(lM);
+
+            return gson.fromJson(rsp.body().string(), EventSimple[].class);
+        }
+
         
+
+
     }
 
     /**

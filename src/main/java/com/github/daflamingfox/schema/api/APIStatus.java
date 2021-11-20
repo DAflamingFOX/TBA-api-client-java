@@ -1,6 +1,5 @@
 package com.github.daflamingfox.schema.api;
 
-import com.github.daflamingfox.util.ObjectUtils;
 import com.google.gson.annotations.SerializedName;
 
 public class APIStatus {
@@ -23,8 +22,4 @@ public class APIStatus {
     @SerializedName("android")
     public APIStatusAppVersion android;
 
-    @Override
-    public String toString() {
-        return ObjectUtils.objToString(this);
-    }
 }
